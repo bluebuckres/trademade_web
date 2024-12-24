@@ -1,0 +1,57 @@
+Refund Policy for TradeMade
+
+Last Updated: December 23, 2023
+
+1. General Refund Policy
+TradeMade Technologies Private Limited ("Company," "we," "us," or "our") provides a SaaS platform ("Platform") for automated trading. All sales are final, and the Company does not offer any money-back guarantees. You recognize and agree that you shall not be entitled to a refund for any purchase under any circumstances.
+
+2. Subscription Cancellation
+Users may cancel their subscription at any time. However, no refunds will be issued for any unused portion of the subscription.
+
+3. Exceptional Circumstances
+In exceptional circumstances, such as a platform malfunction or billing error, users may contact our support team to request a review of their case. The Company reserves the right to grant refunds at its sole discretion.
+
+4. Contact Information
+For questions about this refund policy, please contact us at:
+Email: support@trademade.com
+Address: TradeMade Technologies Private Limited, Mumbai, India
+
+By subscribing to our services, you acknowledge that you have read, understood, and agree to this Refund Policy.
+
+No Warranties
+
+TradeMade Technologies Private Limited ("Company") makes no warranties regarding the performance, reliability, or operation of the Platform. To the fullest extent permissible under applicable law, the Company disclaims all representations and warranties of any kind, express or implied, including but not limited to:
+
+Implied Warranties: Merchantability, fitness for a particular purpose, or non-infringement.
+
+Accuracy and Completeness: The Company does not warrant that the information, contents, materials, or services provided on or through the Platform will be accurate, reliable, complete, or error-free.
+
+Uninterrupted Access: The Company does not guarantee uninterrupted or error-free access to the Platform, and may occasionally need to perform maintenance or updates.
+
+All tools, software, and resources are provided "as is" and "as available," without any guarantees or warranties.
+
+Limitation of Liability
+
+By using the Platform, you agree to release the Company from any liability, loss, or damage resulting from your use of the Platform or reliance on its contents. The Company shall not be held liable for any type of damages, including but not limited to:
+
+Direct or Indirect Damages: Loss of profits, data, or business opportunities.
+
+Special or Incidental Damages: Damages arising from errors, interruptions, or inaccuracies.
+
+Consequential Damages: Losses resulting from reliance on the Platform’s features or third-party integrations.
+
+The Company and its suppliers make no representations regarding the suitability, reliability, or availability of the Platform for any purpose. The information, software, products, and services available on the Platform may contain inaccuracies or typographical errors. Periodic updates may be made, but the Company is under no obligation to do so.
+
+To the maximum extent permitted by applicable law, the Company and/or its suppliers disclaim all warranties and conditions, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement.
+
+General Conditions
+
+Changes to Policy: This Refund and Cancellation Policy may be updated or revised at the Company’s discretion. Users are encouraged to review this policy periodically.
+
+Legal Compliance: This policy is governed by the laws of India. Any disputes related to this policy shall be resolved under the jurisdiction of the courts in Mumbai, Maharashtra.
+
+Severability: If any provision of this policy is found invalid or unenforceable, the remaining provisions shall remain in full force and effect.
+
+For further inquiries, please contact us at:
+
+Email: support@trademade.com

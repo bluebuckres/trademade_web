@@ -1,0 +1,37 @@
+A.
+make hero section headline , with thse, it should came with out headache, after each 10 sec, should be well fited and sync with theeme 
+
+and instead of 
+Supercharge Your
+Trading Strategy
+
+put these two-
+
+"One second is all it takes—TradeMade for a better execution"
+"The difference between now and success? One second, one trade—TradeMade."
+
+and sub headline-
+"When #TimeIsMoney, TradeMade makes every second worthwhile. Your #DecisionsShapeDestiny"
+
+
+
+============
+B.
+add two more page
+1. Customize Your Automation Page
+2How to Use It Page
+
+============
+C.
+add one more feture -
+'Advanced Risk Management'
+
+Kill Switch, define you max loss max profit
+Manage stop-losses (SL), trailing stop-losses (TSL), and target orders with ease.
+
+put this svg in front of that
+/Users/supriyopaul/Downloads/trademade project 4/undraw_setup-analytics_ttg5.svg
+
+
+do one by one A,B, C not all in once
+every penny u invest it returnn back 10 X in chskout page
