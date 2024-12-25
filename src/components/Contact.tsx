@@ -39,11 +39,11 @@ export const Contact = () => {
             className="relative"
           >
             {/* Illustration */}
-            <div className="mb-12">
-              <img
-                src="/undraw_contact-us_kcoa.svg"
-                alt="Contact illustration"
-                className="w-full max-w-lg mx-auto h-auto"
+            <div className="flex-1 p-8">
+              <img 
+                src="/undraw_contact-us_kcoa.svg" 
+                alt="Contact Us Illustration" 
+                className="w-full h-auto max-w-md mx-auto"
               />
             </div>
 
