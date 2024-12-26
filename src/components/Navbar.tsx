@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
@@ -56,6 +56,7 @@ export const Navbar = () => {
             <button
               onClick={toggleMenu}
               className="md:hidden p-2 rounded-lg text-gray-800 hover:bg-white/20 transition-colors"
+              aria-label="Toggle menu"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
