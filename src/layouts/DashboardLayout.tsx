@@ -9,6 +9,24 @@ declare global {
   }
 }
 
+interface PlanLimits {
+  [key: string]: {
+    accounts: number;
+  };
+}
+
+const planLimits: PlanLimits = {
+  Free: {
+    accounts: 1
+  },
+  Basic: {
+    accounts: 2
+  },
+  Pro: {
+    accounts: 'Unlimited'
+  }
+};
+
 const DashboardLayout = () => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
@@ -43,11 +61,7 @@ const DashboardLayout = () => {
     plan: 'Free',
     trialDaysLeft: 5,
     accountsUsed: 2,
-    accountsLimit: {
-      Free: 1,
-      Basic: 2,
-      Pro: 'Unlimited'
-    }
+    accountsLimit: planLimits[userData.plan]
   };
 
   const loadRazorpay = () => {
@@ -238,7 +252,7 @@ const DashboardLayout = () => {
                         onClick={handleLogout}
                         className="flex w-full items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50"
                       >
-                        <LogOut className="h-4 w-4 mr-3" />
+                        <LogOut className="h-4 w-4 mr-1.5" />
                         Logout
                       </button>
                     </div>
@@ -327,9 +341,9 @@ const DashboardLayout = () => {
                     <div className="flex items-center justify-between mb-1.5">
                       <span className="text-sm text-gray-600">Connected Accounts</span>
                       <span className="text-sm font-medium text-gray-900">{userData.accountsUsed} / {
-                        typeof userData.accountsLimit[userData.plan] === 'string' 
-                          ? userData.accountsLimit[userData.plan] 
-                          : userData.accountsLimit[userData.plan]
+                        typeof userData.accountsLimit === 'string' 
+                          ? userData.accountsLimit 
+                          : userData.accountsLimit.accounts
                       }</span>
                     </div>
                     <div className="w-full bg-gray-100 rounded h-1.5">
@@ -341,9 +355,9 @@ const DashboardLayout = () => {
                         }`}
                         style={{ 
                           width: `${Math.min(
-                            typeof userData.accountsLimit[userData.plan] === 'string'
+                            typeof userData.accountsLimit === 'string'
                               ? 100
-                              : (userData.accountsUsed / userData.accountsLimit[userData.plan] * 100),
+                              : (userData.accountsUsed / userData.accountsLimit.accounts * 100),
                             100
                           )}%` 
                         }}

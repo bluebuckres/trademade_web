@@ -20,6 +20,7 @@ export interface UserProfile {
   uid: string;
   email: string;
   displayName?: string;
+  name?: string;
   photoURL?: string;
   phoneVerified?: boolean;
   createdAt: Date;
@@ -50,6 +51,7 @@ export interface AuthResponse {
 export interface UserCredentials {
   email: string;
   password: string;
+  name?: string;
 }
 
 export interface AuthContextType {
@@ -60,7 +62,7 @@ export interface AuthContextType {
   signInWithGoogle: () => Promise<void>;
   signInWithEmail: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
-  isEmailLink: (link: string) => boolean;
+  isEmailLink?: (email: string) => boolean;
   tempUserData?: {
     uid: string;
     email: string;

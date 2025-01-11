@@ -18,14 +18,14 @@ export const Register = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string>('');
 
   const handleGoogleLogin = async () => {
     try {
       setIsLoading(true);
-      setError('');
+      setError(null);
       const result = await signInWithGoogle();
       
       // After successful Google login, redirect to complete profile
@@ -48,7 +48,7 @@ export const Register = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      setError('');
+      setError(null);
       setIsLoading(true);
 
       // Validate turnstile token
@@ -282,7 +282,7 @@ export const Register = () => {
                 siteKey="0x4AAAAAAA46-QFERfpGKcDt"
                 onVerify={(token) => {
                   setTurnstileToken(token);
-                  setError(''); // Clear any previous errors
+                  setError(null); // Clear any previous errors
                 }}
               />
             </div>

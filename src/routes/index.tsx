@@ -1,50 +1,57 @@
 import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import LoginForm from '../components/auth/LoginForm';
-import RegisterForm from '../components/auth/RegisterForm';
-import OTPVerification from '../components/auth/OTPVerification';
-import ProtectedRoute from '../components/auth/ProtectedRoute';
+import { createBrowserRouter, RouterProvider, Route, Navigate } from 'react-router-dom';
+import { Home } from '../pages/Home';
+import { Login } from '../pages/Login';
+import { Register } from '../pages/Register';
+import { Dashboard } from '../pages/dashboard/Overview';
+import { DashboardLayout } from '../layouts/DashboardLayout';
+import { VerifyEmail } from '../pages/VerifyEmail';
+import { Customize } from '../pages/Customize';
+import { ProtectedRoute } from '../components/ProtectedRoute';
 import { useAuth } from '../contexts/AuthContext';
 
-// Lazy load dashboard components
-const Dashboard = React.lazy(() => import('../components/Dashboard'));
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />,
+  },
+  {
+    path: '/login',
+    element: <Login />,
+  },
+  {
+    path: '/register',
+    element: <Register />,
+  },
+  {
+    path: '/verify-email',
+    element: <VerifyEmail />,
+  },
+  {
+    path: '/dashboard',
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout />
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        path: '',
+        element: <Dashboard />,
+      },
+      {
+        path: 'customize',
+        element: <Customize />,
+      },
+    ],
+  },
+]);
 
 const AppRoutes: React.FC = () => {
   const { user } = useAuth();
 
   return (
-    <Routes>
-      {/* Public routes */}
-      <Route
-        path="/login"
-        element={user ? <Navigate to="/dashboard" /> : <LoginForm />}
-      />
-      <Route
-        path="/register"
-        element={user ? <Navigate to="/dashboard" /> : <RegisterForm />}
-      />
-      <Route path="/verify-otp" element={<OTPVerification />} />
-
-      {/* Protected routes */}
-      <Route
-        path="/dashboard/*"
-        element={
-          <ProtectedRoute>
-            <React.Suspense fallback={
-              <div className="min-h-screen flex items-center justify-center">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
-              </div>
-            }>
-              <Dashboard />
-            </React.Suspense>
-          </ProtectedRoute>
-        }
-      />
-
-      {/* Default redirect */}
-      <Route path="/" element={<Navigate to={user ? "/dashboard" : "/login"} />} />
-      <Route path="*" element={<Navigate to="/" />} />
-    </Routes>
+    <RouterProvider router={router} />
   );
 };
 
