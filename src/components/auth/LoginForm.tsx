@@ -1,58 +1,30 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { loginUser, signInWithGoogle } from '../../api/auth';
+import { useAuth } from '../../contexts/AuthContext';
 
-const LoginForm: React.FC = () => {
+interface LoginFormProps {
+  onSuccess: () => void;
+  onRegisterClick: () => void;
+}
+
+export const LoginForm: React.FC<LoginFormProps> = ({ onSuccess, onRegisterClick }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
 
-  const from = location.state?.from?.pathname || '/dashboard';
+  const { signInWithEmail } = useAuth();
 
-  const handleEmailLogin = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     setLoading(true);
 
     try {
-      const response = await loginUser({ email, password });
-      if (response.success) {
-        navigate(from, { replace: true });
-      } else {
-        setError(response.message || 'Failed to login');
-      }
+      await signInWithEmail(email, password);
+      onSuccess();
     } catch (err) {
-      setError('Failed to login');
-    }
-
-    setLoading(false);
-  };
-
-  const handleGoogleLogin = async () => {
-    setError('');
-    setLoading(true);
-
-    try {
-      const response = await signInWithGoogle();
-      if (response.success) {
-        const user = response.data?.user;
-        if (user && !user.mobileNumber) {
-          // If mobile number is not set, redirect to complete profile
-          navigate('/complete-profile', { 
-            state: { userId: user.userId },
-            replace: true 
-          });
-        } else {
-          navigate(from, { replace: true });
-        }
-      } else {
-        setError(response.message || 'Failed to login with Google');
-      }
-    } catch (err) {
-      setError('Failed to login with Google');
+      setError('Failed to sign in');
+      console.error(err);
     }
 
     setLoading(false);
@@ -68,7 +40,7 @@ const LoginForm: React.FC = () => {
         </div>
         
         {/* Email Login Form */}
-        <form className="mt-8 space-y-6" onSubmit={handleEmailLogin}>
+        <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           {error && (
             <div className="rounded-md bg-red-50 p-4">
               <div className="text-sm text-red-700">{error}</div>
@@ -119,7 +91,7 @@ const LoginForm: React.FC = () => {
                   <div className="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full"></div>
                 </span>
               ) : null}
-              Sign in with Email
+              {loading ? 'Signing in...' : 'Sign in'}
             </button>
           </div>
         </form>
@@ -137,9 +109,8 @@ const LoginForm: React.FC = () => {
         {/* Google Login Button */}
         <div>
           <button
-            onClick={handleGoogleLogin}
-            disabled={loading}
-            className="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+            type="button"
+            className="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             <img
               className="h-5 w-5 mr-2"
@@ -149,9 +120,17 @@ const LoginForm: React.FC = () => {
             Sign in with Google
           </button>
         </div>
+
+        <div className="text-center">
+          <button
+            type="button"
+            onClick={onRegisterClick}
+            className="text-indigo-600 hover:text-indigo-500"
+          >
+            Don't have an account? Sign up
+          </button>
+        </div>
       </div>
     </div>
   );
 };
-
-export default LoginForm;

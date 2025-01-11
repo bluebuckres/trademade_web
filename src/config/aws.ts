@@ -1,12 +1,16 @@
 import AWS from 'aws-sdk';
 
+// Configure AWS
 AWS.config.update({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REGION,
+  region: process.env.VITE_AWS_REGION,
+  credentials: new AWS.Credentials({
+    accessKeyId: process.env.VITE_AWS_ACCESS_KEY_ID || '',
+    secretAccessKey: process.env.VITE_AWS_SECRET_ACCESS_KEY || ''
+  })
 });
 
-export const ses = new AWS.SES({ apiVersion: '2010-12-01' });
+// Create SES service object
+const ses = new AWS.SES({ apiVersion: '2010-12-01' });
 
 export const sendOTPEmail = async (to: string, otp: string) => {
   const params = {
@@ -21,10 +25,14 @@ export const sendOTPEmail = async (to: string, otp: string) => {
       },
       Subject: {
         Data: 'TradeMade - Email Verification Code',
-      },
+      }
     },
-    Source: process.env.SES_FROM_EMAIL,
+    Source: process.env.VITE_AWS_SES_FROM_EMAIL
   };
+
+  if (!params.Source) {
+    throw new Error('AWS SES From Email not configured');
+  }
 
   try {
     await ses.sendEmail(params).promise();
