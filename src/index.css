@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --background-start-rgb: 214, 219, 220;
-    --background-end-rgb: 255, 255, 255;
+    --background: #0D0D0D;
+    --foreground: #ffffff;
   }
 
   html {
@@ -13,13 +13,7 @@
   }
   
   body {
-    @apply text-gray-900 antialiased;
-    background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    @apply bg-[#0D0D0D] text-white antialiased min-h-screen;
   }
 }
 

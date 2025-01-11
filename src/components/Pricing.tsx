@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { Check, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from './ui/button';
 
 export const Pricing = () => {
+  const navigate = useNavigate();
   return (
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -57,14 +60,12 @@ export const Pricing = () => {
                   <span className="text-5xl font-bold tracking-tight text-gray-900">₹0</span>
                   <span className="text-sm font-semibold leading-6 tracking-wide text-gray-600">for 7 days</span>
                 </p>
-                <motion.a
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  href="/register"
-                  className="mt-10 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                <Button
+                  onClick={() => navigate('/login')}
+                  className="mt-10 w-full bg-indigo-600 text-white hover:bg-indigo-700"
                 >
                   Start your trial
-                </motion.a>
+                </Button>
               </div>
             </div>
           </div>
@@ -109,14 +110,12 @@ export const Pricing = () => {
                     <p className="ml-3 text-sm leading-6 text-gray-600">Basic automation templates</p>
                   </li>
                 </ul>
-                <motion.a
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  href="/register"
-                  className="mt-8 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                <Button
+                  onClick={() => navigate('/login')}
+                  className="mt-8 w-full bg-indigo-600 text-white hover:bg-indigo-700"
                 >
-                  Get started
-                </motion.a>
+                  Get Started
+                </Button>
               </div>
             </div>
           </motion.div>
@@ -158,14 +157,12 @@ export const Pricing = () => {
                     <p className="ml-3 text-sm leading-6 text-gray-600">Advanced automation features</p>
                   </li>
                 </ul>
-                <motion.a
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  href="/register"
-                  className="mt-8 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                <Button
+                  onClick={() => navigate('/login')}
+                  className="mt-8 w-full bg-indigo-600 text-white hover:bg-indigo-700"
                 >
-                  Get started
-                </motion.a>
+                  Get Started
+                </Button>
               </div>
             </div>
           </motion.div>
@@ -207,14 +204,12 @@ export const Pricing = () => {
                     <p className="ml-3 text-sm leading-6 text-gray-600">1-on-1 strategy consultation</p>
                   </li>
                 </ul>
-                <motion.a
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  href="/register"
-                  className="mt-8 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                <Button
+                  onClick={() => navigate('/login')}
+                  className="mt-8 w-full bg-indigo-600 text-white hover:bg-indigo-700"
                 >
-                  Get started
-                </motion.a>
+                  Get Started
+                </Button>
               </div>
             </div>
           </motion.div>

@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 export const Hero = () => {
+  const navigate = useNavigate();
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-purple-50 to-white overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
@@ -67,6 +69,7 @@ export const Hero = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => navigate('/login')}
               className="mt-8 inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700 md:text-lg shadow-lg hover:shadow-xl transition-all"
             >
               Try Free

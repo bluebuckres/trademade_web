@@ -1,98 +1,77 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { AuthProvider } from './contexts/AuthContext';
 import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { Features } from './components/Features';
-import { Login } from './components/Login';
-import { SignUp } from './components/SignUp';
 import { Footer } from './components/Footer';
-import { CustomizeAutomation } from './components/CustomizeAutomation';
+import Home from './pages/Home';
+import { Customize } from './pages/Customize';
+import { Login } from './components/Login';
+import Register from './pages/Register';
+import { VerifyEmail } from './pages/VerifyEmail';
 import { HowToUse } from './components/HowToUse';
 import { Pricing } from './components/Pricing';
 import { Contact } from './components/Contact';
-import { Terms } from './components/Terms';
-import { RefundPolicy } from './components/RefundPolicy';
-import { PrivacyPolicy } from './components/PrivacyPolicy';
+import ProtectedRoute from './components/auth/ProtectedRoute';
+import DashboardLayout from './layouts/DashboardLayout';
+import AddBroker from './pages/AddBroker';
+import CompleteProfile from './pages/CompleteProfile';
 
-// Layout component with Navbar and Footer
-const Layout = ({ children }: { children: React.ReactNode }) => (
-  <div className="min-h-screen bg-white flex flex-col">
-    <Navbar />
-    <main className="flex-grow pt-16 sm:pt-20">
-      <div className="w-full">
-        {children}
-      </div>
-    </main>
-    <Footer />
-  </div>
-);
-
-const HomePage = () => (
-  <Layout>
-    <Hero />
-    <Features />
-  </Layout>
-);
-
-const CustomizePage = () => (
-  <Layout>
-    <CustomizeAutomation />
-  </Layout>
-);
-
-const HowToUsePage = () => (
-  <Layout>
-    <HowToUse />
-  </Layout>
-);
-
-const PricingPage = () => (
-  <Layout>
-    <Pricing />
-  </Layout>
-);
-
-const ContactPage = () => (
-  <Layout>
-    <Contact />
-  </Layout>
-);
-
-const TermsPage = () => (
-  <Layout>
-    <Terms />
-  </Layout>
-);
-
-const RefundPolicyPage = () => (
-  <Layout>
-    <RefundPolicy />
-  </Layout>
-);
-
-const PrivacyPolicyPage = () => (
-  <Layout>
-    <PrivacyPolicy />
-  </Layout>
-);
-
-function App() {
+const App = () => {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/customize" element={<CustomizePage />} />
-        <Route path="/how-to-use" element={<HowToUsePage />} />
-        <Route path="/pricing" element={<PricingPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/terms" element={<TermsPage />} />
-        <Route path="/refund-policy" element={<RefundPolicyPage />} />
-        <Route path="/privacy" element={<PrivacyPolicyPage />} />
-        <Route path="/login" element={<Layout><Login /></Layout>} />
-        <Route path="/signup" element={<Layout><SignUp /></Layout>} />
-      </Routes>
+      <AuthProvider>
+        <div className="min-h-screen bg-[#0D0D0D]">
+          <Routes>
+            {/* Public Routes with Navbar and Footer */}
+            <Route
+              element={
+                <div className="min-h-screen flex flex-col">
+                  <Navbar />
+                  <main className="flex-grow">
+                    <Outlet />
+                  </main>
+                  <Footer />
+                </div>
+              }
+            >
+              <Route path="/" element={<Home />} />
+              <Route path="/how-to-use" element={<HowToUse />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/customize" element={<Customize />} />
+            </Route>
+
+            {/* Auth Layout - No Navbar/Footer */}
+            <Route
+              element={
+                <div className="min-h-screen flex flex-col bg-[#0D0D0D]">
+                  <main className="flex-grow">
+                    <Outlet />
+                  </main>
+                </div>
+              }
+            >
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/verify-email" element={<VerifyEmail />} />
+              <Route path="/complete-profile" element={<CompleteProfile />} />
+            </Route>
+
+            {/* Protected Dashboard Layout */}
+            <Route element={<ProtectedRoute />}>
+              <Route element={<DashboardLayout />}>
+                <Route path="/dashboard" element={<div>Dashboard</div>} />
+                <Route path="/add-broker" element={<AddBroker />} />
+              </Route>
+            </Route>
+
+            {/* Catch all route */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </div>
+      </AuthProvider>
     </Router>
   );
-}
+};
 
 export default App;

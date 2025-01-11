@@ -11,12 +11,26 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.2.4",
-    "clsx": "^2.0.0",
+    "@marsidev/react-turnstile": "^1.1.0",
+    "@radix-ui/react-slot": "^1.1.1",
+    "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/react-google-recaptcha": "^2.1.9",
+    "@types/react-router-dom": "^5.3.3",
+    "aws-sdk": "^2.1692.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "firebase": "^10.8.0",
     "framer-motion": "^10.16.5",
+    "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.294.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.20.0"
+    "react-google-recaptcha": "^3.1.0",
+    "react-router-dom": "^6.28.1",
+    "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
@@ -33,5 +47,10 @@
     "tailwindcss": "^3.3.5",
     "typescript": "^5.2.2",
     "vite": "^5.0.0"
-  }
+  },
+  "description": "## Overview TradeMade is an innovative trading platform designed to revolutionize the trading experience with cutting-edge technology and user-centric design.",
+  "main": "postcss.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

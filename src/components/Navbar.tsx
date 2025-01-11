@@ -1,127 +1,84 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Button } from './ui/button';
+import { useAuth } from '../contexts/AuthContext';
 
 export const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
+  const handleSignIn = () => {
+    navigate('/login');
   };
 
   return (
-    <nav className="fixed w-full z-50">
-      {/* Desktop Navigation - Glassmorphism effect */}
-      <div className="backdrop-blur-md bg-white/30 border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <Link to="/" className="flex items-center space-x-2">
-              <span className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-blue-500 text-transparent bg-clip-text">
-                TradeMade
-              </span>
+    <nav className="bg-white shadow-sm sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16 items-center">
+          {/* Logo and Navigation Links */}
+          <div className="flex items-center flex-1">
+            {/* Logo */}
+            <Link to="/" className="flex-shrink-0">
+              <img
+                className="h-12 w-auto"
+                src="/trademadelogo.jpeg"
+                alt="TradeMade"
+              />
             </Link>
-
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-8">
-              <Link to="/customize" className="text-gray-800 hover:text-indigo-600 transition-colors">
+            
+            {/* Navigation Links - Now in the same row as logo with proper spacing */}
+            <div className="ml-10 flex items-center space-x-8">
+              <Link
+                to="/customize"
+                className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-200 relative group"
+              >
                 Customize
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
               </Link>
-              <Link to="/how-to-use" className="text-gray-800 hover:text-indigo-600 transition-colors">
+              <Link
+                to="/how-to-use"
+                className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-200 relative group"
+              >
                 How to Use
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
               </Link>
-              <Link to="/pricing" className="text-gray-800 hover:text-indigo-600 transition-colors">
+              <Link
+                to="/pricing"
+                className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-200 relative group"
+              >
                 Pricing
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
               </Link>
-              <Link to="/contact" className="text-gray-800 hover:text-indigo-600 transition-colors">
+              <Link
+                to="/contact"
+                className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-200 relative group"
+              >
                 Contact
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
               </Link>
-              <div className="flex items-center space-x-4">
-                <Link
-                  to="/login"
-                  className="text-gray-800 hover:text-indigo-600 transition-colors"
-                >
-                  Log in
-                </Link>
-                <Link
-                  to="/signup"
-                  className="px-6 py-2 rounded-full text-white bg-indigo-600 hover:bg-indigo-700 transition-colors shadow-md hover:shadow-lg"
-                >
-                  Sign up
-                </Link>
-              </div>
             </div>
+          </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={toggleMenu}
-              className="md:hidden p-2 rounded-lg text-gray-800 hover:bg-white/20 transition-colors"
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+          {/* Sign In Button */}
+          <div className="flex items-center">
+            {user ? (
+              <Link
+                to="/dashboard"
+                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out"
+              >
+                Dashboard
+              </Link>
+            ) : (
+              <Button
+                onClick={handleSignIn}
+                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out"
+              >
+                Sign in
+              </Button>
+            )}
           </div>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="md:hidden backdrop-blur-md bg-white/95 border-b border-white/10"
-          >
-            <div className="px-4 pt-2 pb-6 space-y-4">
-              <Link 
-                to="/customize" 
-                className="block px-4 py-2 text-gray-800 hover:bg-indigo-50 rounded-lg transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                Customize
-              </Link>
-              <Link 
-                to="/how-to-use" 
-                className="block px-4 py-2 text-gray-800 hover:bg-indigo-50 rounded-lg transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                How to Use
-              </Link>
-              <Link 
-                to="/pricing" 
-                className="block px-4 py-2 text-gray-800 hover:bg-indigo-50 rounded-lg transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                Pricing
-              </Link>
-              <Link 
-                to="/contact" 
-                className="block px-4 py-2 text-gray-800 hover:bg-indigo-50 rounded-lg transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                Contact
-              </Link>
-              <div className="pt-4 space-y-4">
-                <Link 
-                  to="/login" 
-                  className="block px-4 py-2 text-gray-800 hover:bg-indigo-50 rounded-lg transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Log in
-                </Link>
-                <Link 
-                  to="/signup" 
-                  className="block px-4 py-2 text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Sign up
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </nav>
   );
 };

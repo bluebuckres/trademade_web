@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80">
+  <rect width="100%" height="100%" fill="white"/>
+  <style>
+    .logo-text { 
+      font-family: 'Arial', sans-serif; 
+      font-weight: bold; 
+      letter-spacing: -1px;
+    }
+  </style>
+  <text x="20" y="55" class="logo-text" fill="black" font-size="48">TradeMade</text>
+</svg>

@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { UserPlus, Settings, PlayCircle, BarChart } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from './ui/button';
 
 export const HowToUse = () => {
+  const navigate = useNavigate();
   return (
     <div className="relative bg-gray-50 py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -104,21 +107,18 @@ export const HowToUse = () => {
             </div>
           </div>
 
-          {/* Help Section */}
+          {/* Support Section */}
           <div className="mt-16 text-center">
-            <h3 className="text-lg font-semibold">Need Help?</h3>
-            <p className="mt-2 text-gray-600">
+            <h3 className="text-2xl font-bold text-gray-900">Need Help?</h3>
+            <p className="mt-4 text-lg text-gray-600">
               Our support team is available 24/7 to assist you
             </p>
-            <motion.a
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              href="/support"
-              className="mt-4 inline-flex items-center text-indigo-600 hover:text-indigo-500"
+            <Button
+              onClick={() => navigate('/contact')}
+              className="mt-8 px-8 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors duration-200"
             >
               Contact Support
-              <span className="ml-2">→</span>
-            </motion.a>
+            </Button>
           </div>
         </div>
       </div>
