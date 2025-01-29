@@ -19,7 +19,7 @@ export const Terms = () => {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">AGREEMENT TO TERMS</h2>
             <p className="text-gray-600">
-              These Terms and Conditions ("Terms") constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("User" or "you"), and TradeMade Technologies Private Limited ("Company," "we," "us," or "our"), concerning your access to and use of the TradeMade SaaS platform, including any related services, features, or content (collectively, the "Platform"). By accessing or using the Platform, you agree to these Terms. If you do not agree with any part of these Terms, you must discontinue using the Platform immediately.
+              These Terms and Conditions ("Terms") constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("User" or "you"), and BlueBuck Research LLP ("Company," "we," "us," or "our"), concerning your access to and use of the TradeMade SaaS platform, including any related services, features, or content (collectively, the "Platform"). By accessing or using the Platform, you agree to these Terms. If you do not agree with any part of these Terms, you must discontinue using the Platform immediately.
             </p>
             <p className="text-gray-600 mt-4">
               Supplemental terms, policies, or documents posted on the Platform from time to time are hereby incorporated by reference into these Terms. We reserve the right to make changes or modifications to these Terms at any time. We will notify you of any material changes by updating the "Last Updated" date of these Terms or through other communication channels.
@@ -137,7 +137,7 @@ export const Terms = () => {
             <p className="text-gray-600 mb-4">If you have questions or concerns about these Terms, please contact us at:</p>
             <div className="text-gray-600">
               <p>Email: support@trademade.com</p>
-              <p>Address: TradeMade Technologies Private Limited, Mumbai, India</p>
+              <p>Address: BlueBuck Research LLP, BF 148/A Rabindrapally, Baguihati, Kolkata, West Bengal 700101, India</p>
             </div>
           </section>
         </motion.div>
