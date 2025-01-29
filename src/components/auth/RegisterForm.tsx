@@ -7,7 +7,7 @@ interface RegisterFormProps {
   onSuccess?: (uid: string) => void;
 }
 
-const RegisterForm: React.FC<RegisterFormProps> = ({ onSuccess }) => {
+const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');

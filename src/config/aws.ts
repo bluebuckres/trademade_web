@@ -13,6 +13,11 @@ AWS.config.update({
 const ses = new AWS.SES({ apiVersion: '2010-12-01' });
 
 export const sendOTPEmail = async (to: string, otp: string) => {
+  const fromEmail = process.env.VITE_AWS_SES_FROM_EMAIL;
+  if (!fromEmail) {
+    throw new Error('AWS SES From Email not configured');
+  }
+
   const params = {
     Destination: {
       ToAddresses: [to],
@@ -27,12 +32,8 @@ export const sendOTPEmail = async (to: string, otp: string) => {
         Data: 'TradeMade - Email Verification Code',
       }
     },
-    Source: process.env.VITE_AWS_SES_FROM_EMAIL
+    Source: fromEmail
   };
-
-  if (!params.Source) {
-    throw new Error('AWS SES From Email not configured');
-  }
 
   try {
     await ses.sendEmail(params).promise();

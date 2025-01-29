@@ -9,9 +9,11 @@ declare global {
   }
 }
 
+type PlanType = 'Free' | 'Basic' | 'Pro';
+
 interface PlanLimits {
   [key: string]: {
-    accounts: number;
+    accounts: number | 'Unlimited';
   };
 }
 
@@ -29,7 +31,12 @@ const planLimits: PlanLimits = {
 
 const DashboardLayout = () => {
   const navigate = useNavigate();
-  const { user, logout } = useAuth();
+  const { user, userProfile, logout } = useAuth();
+  const [userData, setUserData] = useState<{
+    uid: string;
+    email: string;
+    displayName?: string;
+  } | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -56,13 +63,10 @@ const DashboardLayout = () => {
   };
 
   // Sample user data - in real app, this would come from your auth context
-  const userData = {
-    name: user?.displayName || 'John Doe',
-    plan: 'Free',
-    trialDaysLeft: 5,
-    accountsUsed: 2,
-    accountsLimit: planLimits[userData.plan]
-  };
+  const userPlan: PlanType = 'Free';
+  const trialDaysLeft = 5;
+  const accountsUsed = 2;
+  const accountsLimit = planLimits[userPlan];
 
   const loadRazorpay = () => {
     return new Promise((resolve) => {
@@ -127,7 +131,7 @@ const DashboardLayout = () => {
         }
       },
       prefill: {
-        name: userData.name,
+        name: user?.displayName || '',
         contact: user?.phoneNumber || ''
       },
       theme: {
@@ -200,7 +204,7 @@ const DashboardLayout = () => {
                   <div className="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center">
                     <User className="h-5 w-5 text-gray-500" />
                   </div>
-                  <span className="hidden md:inline-block">{userData.name}</span>
+                  <span className="hidden md:inline-block">{user?.displayName}</span>
                   <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showDropdown ? 'transform rotate-180' : ''}`} />
                 </button>
 
@@ -208,7 +212,7 @@ const DashboardLayout = () => {
                 {showDropdown && (
                   <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-100">
                     <div className="px-4 py-2 border-b border-gray-100">
-                      <p className="text-sm font-medium text-gray-900">{userData.name}</p>
+                      <p className="text-sm font-medium text-gray-900">{user?.displayName}</p>
                     </div>
                     
                     <a
@@ -278,34 +282,34 @@ const DashboardLayout = () => {
                     <User className="h-6 w-6 text-gray-500" />
                   </div>
                   <div>
-                    <h2 className="text-lg font-medium text-gray-900">{userData.name}</h2>
+                    <h2 className="text-lg font-medium text-gray-900">{user?.displayName}</h2>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="inline-flex items-center">
                     <Crown className={`h-4 w-4 mr-1.5 ${
-                      userData.plan === 'Pro' ? 'text-yellow-500' : 
-                      userData.plan === 'Basic' ? 'text-blue-500' : 
+                      userPlan === 'Pro' ? 'text-yellow-500' : 
+                      userPlan === 'Basic' ? 'text-blue-500' : 
                       'text-gray-400'
                     }`} />
                     <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${
-                      userData.plan === 'Pro' ? 'bg-yellow-50 text-yellow-700' :
-                      userData.plan === 'Basic' ? 'bg-blue-50 text-blue-700' :
+                      userPlan === 'Pro' ? 'bg-yellow-50 text-yellow-700' :
+                      userPlan === 'Basic' ? 'bg-blue-50 text-blue-700' :
                       'bg-gray-100 text-gray-700'
                     }`}>
-                      {userData.plan} Plan
+                      {userPlan} Plan
                     </span>
                   </div>
-                  {userData.plan === 'Free' && (
+                  {userPlan === 'Free' && (
                     <div className="flex items-center text-orange-600 text-xs">
                       <Clock className="h-3.5 w-3.5 mr-1" />
-                      <span>{userData.trialDaysLeft} days left in trial</span>
+                      <span>{trialDaysLeft} days left in trial</span>
                     </div>
                   )}
                 </div>
-                {userData.plan !== 'Pro' && (
+                {userPlan !== 'Pro' && (
                   <div className="flex gap-3">
-                    {userData.plan === 'Free' && (
+                    {userPlan === 'Free' && (
                       <button 
                         onClick={() => handleUpgrade('Basic')}
                         className="px-3 py-1.5 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors text-sm"
@@ -340,24 +344,24 @@ const DashboardLayout = () => {
                   <div>
                     <div className="flex items-center justify-between mb-1.5">
                       <span className="text-sm text-gray-600">Connected Accounts</span>
-                      <span className="text-sm font-medium text-gray-900">{userData.accountsUsed} / {
-                        typeof userData.accountsLimit === 'string' 
-                          ? userData.accountsLimit 
-                          : userData.accountsLimit.accounts
+                      <span className="text-sm font-medium text-gray-900">{accountsUsed} / {
+                        typeof accountsLimit === 'string' 
+                          ? accountsLimit 
+                          : accountsLimit.accounts
                       }</span>
                     </div>
                     <div className="w-full bg-gray-100 rounded h-1.5">
                       <div 
                         className={`h-1.5 rounded ${
-                          userData.plan === 'Pro' ? 'bg-yellow-500' :
-                          userData.plan === 'Basic' ? 'bg-blue-500' :
+                          userPlan === 'Pro' ? 'bg-yellow-500' :
+                          userPlan === 'Basic' ? 'bg-blue-500' :
                           'bg-gray-500'
                         }`}
                         style={{ 
                           width: `${Math.min(
-                            typeof userData.accountsLimit === 'string'
+                            typeof accountsLimit === 'string'
                               ? 100
-                              : (userData.accountsUsed / userData.accountsLimit.accounts * 100),
+                              : (accountsUsed / accountsLimit.accounts * 100),
                             100
                           )}%` 
                         }}
@@ -366,7 +370,7 @@ const DashboardLayout = () => {
                   </div>
                 </div>
 
-                {userData.plan === 'Free' && (
+                {userPlan === 'Free' && (
                   <div className="p-3 bg-orange-50 rounded border border-orange-100">
                     <h4 className="text-sm font-medium text-orange-800 mb-2">Free Trial Benefits</h4>
                     <ul className="space-y-1 text-sm text-orange-700">

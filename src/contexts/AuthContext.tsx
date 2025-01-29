@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { User } from 'firebase/auth';
-import { auth, db } from '../config/firebase';
-import { signInWithGoogle as signInWithGoogleApi, signInWithEmail as signInWithEmailApi, signOut as signOutApi, getUserProfile } from '../api/auth';
+import { auth } from '../config/firebase';
+import { signInWithGoogle as signInWithGoogleApi, signInWithEmail as signInWithEmailApi, logoutUser } from '../api/auth';
 import { AuthContextType, UserProfile } from '../types/auth';
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -68,17 +68,31 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
-  const signOut = async () => {
+  const logout = async () => {
     try {
-      setError(null);
-      const response = await signOutApi();
-      if (!response.success) {
-        throw new Error(response.message);
+      await logoutUser();
+      setUser(null);
+      setUserProfile(null);
+    } catch (error) {
+      setError(error instanceof Error ? error.message : 'Failed to logout');
+    }
+  };
+
+  const isEmailLink = (url: string) => {
+    return auth.isSignInWithEmailLink(url);
+  };
+
+  const completeSignInWithLink = async (email: string, link: string) => {
+    try {
+      const result = await auth.signInWithEmailLink(email, link);
+      if (result.user) {
+        setUser(result.user);
+        return { success: true, user: result.user };
       }
-    } catch (err) {
-      console.error('Error signing out:', err);
-      setError('Failed to sign out');
-      throw err;
+      throw new Error('Failed to complete email sign in');
+    } catch (error) {
+      console.error('Error completing email sign in:', error);
+      throw error;
     }
   };
 
@@ -89,7 +103,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     error,
     signInWithGoogle,
     signInWithEmail,
-    signOut
+    logout,
+    isEmailLink,
+    completeSignInWithLink
   };
 
   if (loading) {

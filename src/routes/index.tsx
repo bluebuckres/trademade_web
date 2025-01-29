@@ -3,11 +3,11 @@ import { createBrowserRouter, RouterProvider, Route, Navigate } from 'react-rout
 import { Home } from '../pages/Home';
 import { Login } from '../pages/Login';
 import { Register } from '../pages/Register';
-import { Dashboard } from '../pages/dashboard/Overview';
-import { DashboardLayout } from '../layouts/DashboardLayout';
 import { VerifyEmail } from '../pages/VerifyEmail';
+import Overview from '../pages/dashboard/Overview';
+import DashboardLayout from '../layouts/DashboardLayout';
+import { ProtectedRoute } from '../components/auth/ProtectedRoute';
 import { Customize } from '../pages/Customize';
-import { ProtectedRoute } from '../components/ProtectedRoute';
 import { useAuth } from '../contexts/AuthContext';
 
 const router = createBrowserRouter([
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '',
-        element: <Dashboard />,
+        element: <Overview />,
       },
       {
         path: 'customize',

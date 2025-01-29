@@ -1,9 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { logoutUser } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
 
-const Dashboard: React.FC = () => {
+const Dashboard = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
 

@@ -6,7 +6,7 @@ import {
   signOut as firebaseSignOut,
   User
 } from 'firebase/auth';
-import { doc, getDoc, setDoc, updateDoc, Firestore } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { auth, db } from '../config/firebase';
 import { UserProfile, UserCredentials, OTPVerificationData, AuthResponse } from '../types/auth';
 
@@ -74,18 +74,17 @@ export const signInWithEmail = async (email: string, password: string): Promise<
   }
 };
 
-export const signOut = async (): Promise<AuthResponse> => {
+export const logoutUser = async (): Promise<AuthResponse> => {
   try {
     await firebaseSignOut(auth);
     return {
       success: true,
-      message: 'Successfully signed out'
+      message: 'Successfully logged out'
     };
   } catch (error) {
-    console.error('Error signing out:', error);
     return {
       success: false,
-      message: 'Failed to sign out'
+      message: error instanceof Error ? error.message : 'Failed to logout'
     };
   }
 };

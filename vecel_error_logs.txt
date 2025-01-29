@@ -1,0 +1,78 @@
+[19:25:15.674] Running build in Washington, D.C., USA (East) – iad1
+[19:25:15.939] Cloning github.com/bluebuckres/trademade_web (Branch: main, Commit: 2c41ddd)
+[19:25:16.277] Cloning completed: 337.44ms
+[19:25:17.841] Restored build cache from previous deployment (8noMomA3Szogue5hxqenfaZAgzPf)
+[19:25:17.930] Running "vercel build"
+[19:25:18.376] Vercel CLI 39.2.5
+[19:25:20.465] Installing dependencies...
+[19:25:24.767] npm warn deprecated querystring@0.2.0: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
+[19:25:40.075] 
+[19:25:40.075] added 217 packages, removed 8 packages, and changed 10 packages in 19s
+[19:25:40.075] 
+[19:25:40.075] 96 packages are looking for funding
+[19:25:40.075]   run `npm fund` for details
+[19:25:40.095] Running "npm run build"
+[19:25:40.251] 
+[19:25:40.251] > trademade-landing@0.0.0 build
+[19:25:40.251] > tsc && vite build
+[19:25:40.251] 
+[19:25:50.155] src/App.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+[19:25:50.157] src/api/auth.ts(2,3): error TS6133: 'Auth' is declared but its value is never read.
+[19:25:50.157] src/api/auth.ts(7,3): error TS6133: 'User' is declared but its value is never read.
+[19:25:50.157] src/api/auth.ts(9,42): error TS6133: 'Firestore' is declared but its value is never read.
+[19:25:50.157] src/api/auth.ts(11,23): error TS6133: 'UserCredentials' is declared but its value is never read.
+[19:25:50.157] src/api/auth.ts(11,40): error TS6133: 'OTPVerificationData' is declared but its value is never read.
+[19:25:50.158] src/api/auth.ts(93,35): error TS6133: 'otp' is declared but its value is never read.
+[19:25:50.158] src/components/Dashboard.tsx(3,10): error TS2305: Module '"../api/auth"' has no exported member 'logoutUser'.
+[19:25:50.158] src/components/ErrorBoundary.tsx(1,8): error TS6133: 'React' is declared but its value is never read.
+[19:25:50.158] src/components/Navbar.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+[19:25:50.158] src/components/TradingChakra.tsx(189,10): error TS6133: 'isMobile' is declared but its value is never read.
+[19:25:50.158] src/components/Turnstile.tsx(47,14): error TS2790: The operand of a 'delete' operator must be optional.
+[19:25:50.159] src/components/auth/AuthContainer.tsx(3,10): error TS2614: Module '"./RegisterForm"' has no exported member 'RegisterForm'. Did you mean to use 'import RegisterForm from "./RegisterForm"' instead?
+[19:25:50.159] src/components/auth/AuthContainer.tsx(7,11): error TS6196: 'LoginProps' is declared but never used.
+[19:25:50.159] src/components/auth/AuthContainer.tsx(12,11): error TS6196: 'RegisterProps' is declared but never used.
+[19:25:50.159] src/components/auth/AuthContainer.tsx(17,11): error TS6196: 'OTPProps' is declared but never used.
+[19:25:50.161] src/components/auth/AuthContainer.tsx(36,34): error TS6133: 'newUid' is declared but its value is never read.
+[19:25:50.161] src/components/auth/ProfileCompletion.tsx(27,23): error TS2339: Property 'name' does not exist on type '{ uid: string; email: string; displayName?: string | undefined; }'.
+[19:25:50.161] src/components/auth/ProfileCompletion.tsx(30,28): error TS2339: Property 'name' does not exist on type '{ uid: string; email: string; displayName?: string | undefined; }'.
+[19:25:50.161] src/components/auth/RegisterForm.tsx(3,10): error TS2305: Module '"../../api/auth"' has no exported member 'registerUser'.
+[19:25:50.161] src/components/icons/TradingIcons.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+[19:25:50.161] src/config/aws.ts(38,25): error TS2769: No overload matches this call.
+[19:25:50.161]   Overload 1 of 2, '(params: SendEmailRequest, callback?: ((err: AWSError, data: SendEmailResponse) => void) | undefined): Request<SendEmailResponse, AWSError>', gave the following error.
+[19:25:50.161]     Argument of type '{ Destination: { ToAddresses: string[]; }; Message: { Body: { Text: { Data: string; }; }; Subject: { Data: string; }; }; Source: string | undefined; }' is not assignable to parameter of type 'SendEmailRequest'.
+[19:25:50.162]       Types of property 'Source' are incompatible.
+[19:25:50.162]         Type 'string | undefined' is not assignable to type 'string'.
+[19:25:50.162]           Type 'undefined' is not assignable to type 'string'.
+[19:25:50.162]   Overload 2 of 2, '(callback?: ((err: AWSError, data: SendEmailResponse) => void) | undefined): Request<SendEmailResponse, AWSError>', gave the following error.
+[19:25:50.162]     Argument of type '{ Destination: { ToAddresses: string[]; }; Message: { Body: { Text: { Data: string; }; }; Subject: { Data: string; }; }; Source: string | undefined; }' is not assignable to parameter of type '(err: AWSError, data: SendEmailResponse) => void'.
+[19:25:50.162]       Type '{ Destination: { ToAddresses: string[]; }; Message: { Body: { Text: { Data: string; }; }; Subject: { Data: string; }; }; Source: string | undefined; }' provides no match for the signature '(err: AWSError, data: SendEmailResponse): void'.
+[19:25:50.162] src/contexts/AuthContext.tsx(3,16): error TS6133: 'db' is declared but its value is never read.
+[19:25:50.162] src/contexts/AuthContext.tsx(103,32): error TS2741: Property 'isEmailLink' is missing in type '{ user: User | null; userProfile: UserProfile | null; loading: boolean; error: string | null; signInWithGoogle: () => Promise<void>; signInWithEmail: (email: string, password: string) => Promise<...>; signOut: () => Promise<...>; }' but required in type 'AuthContextType'.
+[19:25:50.162] src/hooks/useAuth.ts(4,10): error TS2724: '"../api/auth"' has no exported member named 'getUserRole'. Did you mean 'getUserProfile'?
+[19:25:50.162] src/layouts/DashboardLayout.tsx(1,8): error TS6133: 'React' is declared but its value is never read.
+[19:25:50.163] src/layouts/DashboardLayout.tsx(14,17): error TS2339: Property 'logout' does not exist on type 'AuthContextType'.
+[19:25:50.163] src/layouts/DashboardLayout.tsx(330,32): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ Free: number; Basic: number; Pro: string; }'.
+[19:25:50.163]   No index signature with a parameter of type 'string' was found on type '{ Free: number; Basic: number; Pro: string; }'.
+[19:25:50.163] src/layouts/DashboardLayout.tsx(331,29): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ Free: number; Basic: number; Pro: string; }'.
+[19:25:50.163]   No index signature with a parameter of type 'string' was found on type '{ Free: number; Basic: number; Pro: string; }'.
+[19:25:50.163] src/layouts/DashboardLayout.tsx(332,29): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ Free: number; Basic: number; Pro: string; }'.
+[19:25:50.163]   No index signature with a parameter of type 'string' was found on type '{ Free: number; Basic: number; Pro: string; }'.
+[19:25:50.163] src/layouts/DashboardLayout.tsx(344,36): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ Free: number; Basic: number; Pro: string; }'.
+[19:25:50.163]   No index signature with a parameter of type 'string' was found on type '{ Free: number; Basic: number; Pro: string; }'.
+[19:25:50.163] src/layouts/DashboardLayout.tsx(346,58): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ Free: number; Basic: number; Pro: string; }'.
+[19:25:50.163]   No index signature with a parameter of type 'string' was found on type '{ Free: number; Basic: number; Pro: string; }'.
+[19:25:50.164] src/pages/Customize.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+[19:25:50.164] src/pages/Home.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+[19:25:50.164] src/pages/Login.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+[19:25:50.164] src/pages/Register.tsx(35,25): error TS2339: Property 'user' does not exist on type 'void'.
+[19:25:50.164] src/pages/Register.tsx(36,29): error TS2339: Property 'user' does not exist on type 'void'.
+[19:25:50.164] src/pages/Register.tsx(37,28): error TS2339: Property 'user' does not exist on type 'void'.
+[19:25:50.164] src/pages/VerifyEmail.tsx(1,8): error TS6133: 'React' is declared but its value is never read.
+[19:25:50.164] src/pages/VerifyEmail.tsx(7,24): error TS2339: Property 'completeSignInWithLink' does not exist on type 'AuthContextType'.
+[19:25:50.164] src/pages/VerifyEmail.tsx(11,9): error TS6133: 'location' is declared but its value is never read.
+[19:25:50.164] src/pages/dashboard/Overview.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+[19:25:50.164] src/routes/index.tsx(3,8): error TS2613: Module '"/vercel/path0/src/components/auth/LoginForm"' has no default export. Did you mean to use 'import { LoginForm } from "/vercel/path0/src/components/auth/LoginForm"' instead?
+[19:25:50.164] src/routes/index.tsx(5,8): error TS2613: Module '"/vercel/path0/src/components/auth/OTPVerification"' has no default export. Did you mean to use 'import { OTPVerification } from "/vercel/path0/src/components/auth/OTPVerification"' instead?
+[19:25:50.165] src/routes/index.tsx(32,12): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & ProtectedRouteProps'.
+[19:25:50.226] Error: Command "npm run build" exited with 2
+[19:25:50.868] 

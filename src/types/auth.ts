@@ -59,13 +59,9 @@ export interface AuthContextType {
   userProfile: UserProfile | null;
   loading: boolean;
   error: string | null;
-  signInWithGoogle: () => Promise<void>;
+  signInWithGoogle: () => Promise<GoogleAuthResponse>;
   signInWithEmail: (email: string, password: string) => Promise<void>;
-  signOut: () => Promise<void>;
-  isEmailLink?: (email: string) => boolean;
-  tempUserData?: {
-    uid: string;
-    email: string;
-    displayName?: string;
-  };
+  logout: () => Promise<void>;
+  isEmailLink: (url: string) => boolean;
+  completeSignInWithLink: (email: string, link: string) => Promise<{ success: boolean; user: User }>;
 }

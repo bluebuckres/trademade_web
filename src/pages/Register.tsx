@@ -28,15 +28,17 @@ export const Register = () => {
       setError(null);
       const result = await signInWithGoogle();
       
-      // After successful Google login, redirect to complete profile
-      navigate('/complete-profile', { 
-        state: { 
-          provider: 'google',
-          email: result.user.email,
-          firstName: result.user.displayName?.split(' ')[0] || '',
-          lastName: result.user.displayName?.split(' ').slice(1).join(' ') || ''
-        } 
-      });
+      if (result && result.success && result.data?.user) {
+        // After successful Google login, redirect to complete profile
+        navigate('/complete-profile', { 
+          state: { 
+            provider: 'google',
+            email: result.data.user.email,
+            firstName: result.data.user.displayName?.split(' ')[0] || '',
+            lastName: result.data.user.displayName?.split(' ').slice(1).join(' ') || ''
+          } 
+        });
+      }
     } catch (error) {
       console.error('Google login error:', error);
       setError('Failed to sign in with Google. Please try again.');
