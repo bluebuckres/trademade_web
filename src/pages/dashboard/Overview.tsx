@@ -1,7 +1,7 @@
 import React from 'react';
 import { LineChart, Wallet, Users, TrendingUp } from 'lucide-react';
 
-export const Overview = () => {
+const Overview = () => {
   return (
     <div className="space-y-6">
       {/* Stats */}
@@ -118,3 +118,6 @@ export const Overview = () => {
     </div>
   );
 };
+
+export { Overview };
+export default Overview;

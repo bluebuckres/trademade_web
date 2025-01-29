@@ -1,10 +1,8 @@
 import { 
-  Auth,
   signInWithPopup,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
-  signOut as firebaseSignOut,
-  User
+  signOut as firebaseSignOut
 } from 'firebase/auth';
 import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { auth, db } from '../config/firebase';
@@ -123,14 +121,11 @@ export const verifyOTP = async ({ otp, uid }: { otp: string; uid: string }): Pro
 };
 
 export const getUserProfile = async (uid: string): Promise<UserProfile> => {
-  const userProfileRef = doc(db, 'users', uid);
-  const userSnapshot = await getDoc(userProfileRef);
-
-  if (!userSnapshot.exists()) {
+  const userDoc = await getDoc(doc(db, 'users', uid));
+  if (!userDoc.exists()) {
     throw new Error('User profile not found');
   }
-
-  return userSnapshot.data() as UserProfile;
+  return userDoc.data() as UserProfile;
 };
 
 export const updateUserProfile = async (
