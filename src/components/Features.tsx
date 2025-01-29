@@ -4,29 +4,29 @@ import { Users, RefreshCw, Newspaper, Zap } from 'lucide-react';
 
 const features = [
   {
-    title: 'Multi-Broker Integration',
-    description: 'Connect and manage multiple trading accounts across different brokers from a single dashboard. Streamline your operations and reduce complexity.',
+    title: 'Multi-Platform Integration',
+    description: 'Connect and manage multiple accounts across different platforms from a single dashboard. Streamline your operations and reduce complexity.',
     icon: Users,
     image: '/undraw_followers_oy4u.svg',
-    stats: ['100+ Brokers', '1-Click Setup', 'Real-time Sync']
+    stats: ['100+ Integrations', '1-Click Setup', 'Real-time Sync']
   },
   {
-    title: 'Copy Trading System',
-    description: 'Automatically replicate successful traders\' strategies across your accounts. Learn from the best and optimize your returns.',
+    title: 'Smart Automation',
+    description: 'Automatically execute your strategies across your accounts. Optimize your workflow and improve efficiency.',
     icon: RefreshCw,
     image: '/undraw_mind-map_saei.svg',
-    stats: ['Top Traders', 'Risk Management', 'Real-time Copying']
+    stats: ['Advanced Algorithms', 'Risk Management', 'Real-time Execution']
   },
   {
     title: 'News Feed Integration',
-    description: 'Stay ahead with real-time market news and automated trading triggers. Never miss a trading opportunity.',
+    description: 'Stay ahead with real-time market news and automated triggers. Never miss an opportunity.',
     icon: Newspaper,
     image: '/undraw_real-time-analytics_xu2g.svg',
     stats: ['<0.1s Latency', 'AI Analysis', 'Smart Alerts']
   },
   {
-    title: 'One-Click Trading',
-    description: 'Execute complex trading strategies across multiple accounts with a single click. Reduce slippage and improve execution speed.',
+    title: 'One-Click Execution',
+    description: 'Execute complex strategies across multiple accounts with a single click. Reduce delays and improve execution speed.',
     icon: Zap,
     image: '/undraw_select_u1sa.svg',
     stats: ['Bulk Orders', 'Smart Routing', '10x Faster']

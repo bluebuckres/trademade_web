@@ -148,7 +148,7 @@ const DashboardLayout = () => {
     {
       brokerName: 'Zerodha',
       brokerId: 'PIA343',
-      accountAlias: 'Main Trading',
+      accountAlias: 'Smart Automation',
       status: 'Active',
       copyTrading: false,
       validity: '2025-01-15',
@@ -158,7 +158,7 @@ const DashboardLayout = () => {
     {
       brokerName: 'Shoonya',
       brokerId: 'FA6473',
-      accountAlias: 'Copy Trading',
+      accountAlias: 'Smart Automation',
       status: 'Inactive',
       copyTrading: true,
       validity: null,
@@ -168,7 +168,7 @@ const DashboardLayout = () => {
     {
       brokerName: 'Flatrade',
       brokerId: 'FT4564',
-      accountAlias: 'Copy Trading',
+      accountAlias: 'Smart Automation',
       status: 'Active',
       copyTrading: true,
       validity: '2025-01-20',
@@ -413,7 +413,7 @@ const DashboardLayout = () => {
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Broker ID</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Account Alias</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Copy Trading</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Smart Automation</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Validity (Plan)</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">API</th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Extend (Plan)</th>
@@ -469,7 +469,7 @@ const DashboardLayout = () => {
                     <h3 className="text-lg font-medium text-gray-900">Basic Plan Features</h3>
                     <ul className="mt-2 text-sm text-gray-600 space-y-1">
                       <li>• One Main Trading Account</li>
-                      <li>• One Free Copy Trading Account</li>
+                      <li>• One Free Automation Account</li>
                       <li>• 30 Days Validity per Extension</li>
                     </ul>
                   </div>
@@ -484,7 +484,7 @@ const DashboardLayout = () => {
                   <div className="flex-1">
                     <h3 className="text-lg font-medium text-gray-900">Pro Plan Features</h3>
                     <ul className="mt-2 text-sm text-gray-600 space-y-1">
-                      <li>• Multiple Copy Trading Accounts</li>
+                      <li>• Multiple Automation Accounts</li>
                       <li>• ₹500 per Account Extension</li>
                       <li>• Priority Support</li>
                     </ul>
