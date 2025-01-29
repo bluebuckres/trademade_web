@@ -3,9 +3,24 @@
   publish = "dist"
 
 [[headers]]
-  for = "/*"
+  for = "/assets/*"
   [headers.values]
     "Content-Type" = "text/javascript"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    "Content-Type" = "text/javascript"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    "Content-Type" = "text/css"
+
+[[headers]]
+  for = "/favicon.ico"
+  [headers.values]
+    "Content-Type" = "image/x-icon"
 
 [[redirects]]
   from = "/*"
