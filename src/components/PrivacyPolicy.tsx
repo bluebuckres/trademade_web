@@ -17,7 +17,7 @@ export const PrivacyPolicy = () => {
           <p className="text-gray-600 mb-8">Last Updated: December 24, 2023</p>
 
           <div className="text-gray-600 mb-12">
-            Thank you for choosing to be part of our community at TradeMade Technologies Private Limited ("Company," "we," "us," or "our"). We are committed to protecting your personal information and your right to privacy.
+            Thank you for choosing to be part of our community at BlueBuck Research LLP ("Company," "we," "us," or "our"). We are committed to protecting your personal information and your right to privacy.
           </div>
 
           <section className="mb-12">
@@ -81,7 +81,7 @@ export const PrivacyPolicy = () => {
             <div className="text-gray-600">
               <p>For privacy-related inquiries:</p>
               <p className="mt-2">Email: contact@trademade.in</p>
-              <p>Address: TradeMade Technologies Private Limited, BF 148/A Rabindrapally, Baguihati, Kolkata, West Bengal 700101, India</p>
+              <p>Address: BlueBuck Research LLP, BF 148/A Rabindrapally, Baguihati, Kolkata, West Bengal 700101, India</p>
             </div>
           </section>
 

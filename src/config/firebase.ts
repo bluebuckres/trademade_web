@@ -1,6 +1,9 @@
+// Temporarily disabled Firebase configuration
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
+import { Auth, User } from 'firebase/auth';
+import { Firestore } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -12,8 +15,30 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-export const db = getFirestore(app);
+// Mock auth object
+const mockAuth = {
+  currentUser: null,
+  onAuthStateChanged: (callback: (user: User | null) => void) => {
+    callback(null);
+    return () => {};
+  },
+  signInWithEmailAndPassword: async () => {
+    throw new Error('Firebase authentication is temporarily disabled');
+  },
+  createUserWithEmailAndPassword: async () => {
+    throw new Error('Firebase authentication is temporarily disabled');
+  },
+  signOut: async () => {},
+} as unknown as Auth;
 
-export default app;
+// Mock firestore object
+const mockDb = {} as Firestore;
+
+const app = initializeApp(firebaseConfig);
+export const auth = mockAuth;
+export const db = mockDb;
+
+export default {
+  auth: mockAuth,
+  db: mockDb,
+};

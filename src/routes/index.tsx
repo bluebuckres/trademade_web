@@ -9,6 +9,10 @@ import DashboardLayout from '../layouts/DashboardLayout';
 import { ProtectedRoute } from '../components/auth/ProtectedRoute';
 import { Customize } from '../pages/Customize';
 import { useAuth } from '../contexts/AuthContext';
+import { PrivacyPolicy } from '../components/PrivacyPolicy';
+import { Terms } from '../components/Terms';
+import { RefundPolicy } from '../components/RefundPolicy';
+import { Security } from '../components/Security';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +30,22 @@ const router = createBrowserRouter([
   {
     path: '/verify-email',
     element: <VerifyEmail />,
+  },
+  {
+    path: '/privacy',
+    element: <PrivacyPolicy />,
+  },
+  {
+    path: '/terms',
+    element: <Terms />,
+  },
+  {
+    path: '/refund-policy',
+    element: <RefundPolicy />,
+  },
+  {
+    path: '/security',
+    element: <Security />,
   },
   {
     path: '/dashboard',

@@ -14,6 +14,10 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import DashboardLayout from './layouts/DashboardLayout';
 import AddBroker from './pages/AddBroker';
 import CompleteProfile from './pages/CompleteProfile';
+import { PrivacyPolicy } from './components/PrivacyPolicy';
+import { Terms } from './components/Terms';
+import { RefundPolicy } from './components/RefundPolicy';
+import { Security } from './components/Security';
 
 const App = () => {
   return (
@@ -37,7 +41,12 @@ const App = () => {
               <Route path="/how-to-use" element={<HowToUse />} />
               <Route path="/pricing" element={<Pricing />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/customize" element={<Customize />} />
+              {/* Temporarily hidden */}
+              {/* <Route path="/customize" element={<Customize />} /> */}
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/refund-policy" element={<RefundPolicy />} />
+              <Route path="/security" element={<Security />} />
             </Route>
 
             {/* Auth Layout - No Navbar/Footer */}

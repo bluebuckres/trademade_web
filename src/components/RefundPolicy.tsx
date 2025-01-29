@@ -19,7 +19,7 @@ export const RefundPolicy = () => {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. General Refund Policy</h2>
             <p className="text-gray-600">
-              TradeMade Technologies Private Limited ("Company," "we," "us," or "our") provides a SaaS platform ("Platform") for automated trading. All sales are final, and the Company does not offer any money-back guarantees. You recognize and agree that you shall not be entitled to a refund for any purchase under any circumstances.
+              BlueBuck Research LLP ("Company," "we," "us," or "our") provides a SaaS platform ("Platform") for automated trading. All sales are final, and the Company does not offer any money-back guarantees. You recognize and agree that you shall not be entitled to a refund for any purchase under any circumstances.
             </p>
           </section>
 
@@ -47,7 +47,7 @@ export const RefundPolicy = () => {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">5. Limitation of Liability</h2>
             <p className="text-gray-600">
-              In no event shall TradeMade Technologies Private Limited be liable for any special, incidental, indirect, or consequential damages whatsoever arising out of or in connection with your use of the Platform.
+              In no event shall BlueBuck Research LLP be liable for any special, incidental, indirect, or consequential damages whatsoever arising out of or in connection with your use of the Platform.
             </p>
           </section>
 
@@ -63,7 +63,7 @@ export const RefundPolicy = () => {
             <p className="text-gray-600 mb-4">For further inquiries, please contact us at:</p>
             <div className="text-gray-600">
               <p>Email: contact@trademade.in</p>
-              <p>Address: TradeMade Technologies Private Limited, BF 148/A Rabindrapally, Baguihati, Kolkata, West Bengal 700101, India</p>
+              <p>Address: BlueBuck Research LLP, BF 148/A Rabindrapally, Baguihati, Kolkata, West Bengal 700101, India</p>
             </div>
           </section>
 
@@ -71,6 +71,11 @@ export const RefundPolicy = () => {
             <p className="text-gray-600 italic">
               By subscribing to our services, you acknowledge that you have read, understood, and agree to this Refund Policy.
             </p>
+            <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+              <p className="text-gray-700 font-medium">
+                Important Notice: To maintain the integrity of our premium services and ensure consistent quality, all payments made to TradeMade are considered final and non-refundable. This policy helps us focus on delivering exceptional value and continuous platform improvements for our users.
+              </p>
+            </div>
           </section>
         </motion.div>
       </div>
