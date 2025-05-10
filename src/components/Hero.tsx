@@ -15,7 +15,7 @@ export const Hero = () => {
         >
           <img
             src="/undraw_season-change_ohe6.svg"
-            alt="Trading Background"
+            alt="Automation Platform"
             className="w-full h-full object-contain"
           />
         </motion.div>
@@ -43,7 +43,7 @@ export const Hero = () => {
             >
               <img
                 src="/undraw_season-change_ohe6.svg"
-                alt="Trading Platform"
+                alt="Automation Platform"
                 className="w-full h-auto max-w-[280px] mx-auto"
               />
             </motion.div>
@@ -57,9 +57,9 @@ export const Hero = () => {
               transition={{ duration: 0.6 }}
               className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl"
             >
-              <span className="block">Seamlessly execute trades</span>
-              <span className="block text-indigo-600">across brokers and accounts</span>
-              <span className="block">with real-time news in one click</span>
+              <span className="block">Seamlessly automate your strategy</span>
+              <span className="block text-indigo-600">across multiple platforms</span>
+              <span className="block">with real-time insights in one click</span>
             </motion.h1>
 
             {/* CTA Button - Shown immediately after heading */}
@@ -145,41 +145,43 @@ export const Hero = () => {
             >
               <img
                 src="/undraw_season-change_ohe6.svg"
-                alt="Trading Platform"
+                alt="Automation Platform"
                 className="w-full max-w-2xl mx-auto"
               />
             </motion.div>
           </motion.div>
         </div>
 
-        {/* Broker Logos */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-16"
-        >
-          <h3 className="text-xl font-semibold text-gray-900 mb-8 text-center lg:text-left">Supports all major Brokers</h3>
-          <div className="flex justify-center lg:justify-start space-x-8 lg:space-x-12">
-            <div className="flex flex-col items-center space-y-2">
-              <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-full bg-white shadow-lg flex items-center justify-center p-4 hover:shadow-xl transition-shadow duration-300">
-                <img src="/flattrade_logo.png" alt="Flattrade" className="w-12 h-12 lg:w-16 lg:h-16 object-contain" />
+        {/* Temporarily hidden Broker Logos section */}
+        {false && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="mt-16"
+          >
+            <h3 className="text-xl font-semibold text-gray-900 mb-8 text-center lg:text-left">Supports all major Brokers</h3>
+            <div className="flex justify-center lg:justify-start space-x-8 lg:space-x-12">
+              <div className="flex flex-col items-center space-y-2">
+                <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-full bg-white shadow-lg flex items-center justify-center p-4 hover:shadow-xl transition-shadow duration-300">
+                  <img src="/flattrade_logo.png" alt="Flattrade" className="w-12 h-12 lg:w-16 lg:h-16 object-contain" />
+                </div>
+                <span className="text-gray-600">Flattrade</span>
               </div>
-              <span className="text-gray-600">Flattrade</span>
-            </div>
-            <div className="flex flex-col items-center space-y-2">
-              <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-full bg-white shadow-lg flex items-center justify-center p-4 hover:shadow-xl transition-shadow duration-300">
-                <img src="/shoonya_logo.png" alt="Shoonya" className="w-12 h-12 lg:w-16 lg:h-16 object-contain" />
+              <div className="flex flex-col items-center space-y-2">
+                <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-full bg-white shadow-lg flex items-center justify-center p-4 hover:shadow-xl transition-shadow duration-300">
+                  <img src="/shoonya_logo.png" alt="Shoonya" className="w-12 h-12 lg:w-16 lg:h-16 object-contain" />
+                </div>
+                <span className="text-gray-600">Shoonya</span>
               </div>
-              <span className="text-gray-600">Shoonya</span>
-            </div>
-            <div className="flex flex-col items-center space-y-2">
-              <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-full bg-white shadow-lg flex items-center justify-center p-4 hover:shadow-xl transition-shadow duration-300">
-                <span className="text-gray-400 text-sm lg:text-lg font-medium">More coming soon...</span>
+              <div className="flex flex-col items-center space-y-2">
+                <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-full bg-white shadow-lg flex items-center justify-center p-4 hover:shadow-xl transition-shadow duration-300">
+                  <span className="text-gray-400 text-sm lg:text-lg font-medium">More coming soon...</span>
+                </div>
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        )}
       </div>
     </div>
   );
