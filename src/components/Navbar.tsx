@@ -29,6 +29,13 @@ export const Navbar = () => {
             {/* Navigation Links - Now in the same row as logo with proper spacing */}
             <div className="ml-10 flex items-center space-x-8">
               <Link
+                to="/about-us"
+                className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-200 relative group"
+              >
+                About Us
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+              </Link>
+              <Link
                 to="/customize"
                 className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors duration-200 relative group"
               >

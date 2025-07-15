@@ -4,9 +4,10 @@ import { Home } from '../pages/Home';
 import { Login } from '../pages/Login';
 import { Register } from '../pages/Register';
 import { VerifyEmail } from '../pages/VerifyEmail';
+import AboutUs from '../pages/AboutUs';
 import Overview from '../pages/dashboard/Overview';
 import DashboardLayout from '../layouts/DashboardLayout';
-import { ProtectedRoute } from '../components/auth/ProtectedRoute';
+import ProtectedRoute from '../components/auth/ProtectedRoute';
 import { Customize } from '../pages/Customize';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -28,20 +29,25 @@ const router = createBrowserRouter([
     element: <VerifyEmail />,
   },
   {
+    path: '/about-us',
+    element: <AboutUs />,
+  },
+  {
     path: '/dashboard',
-    element: (
-      <ProtectedRoute>
-        <DashboardLayout />
-      </ProtectedRoute>
-    ),
+    element: <ProtectedRoute />,
     children: [
       {
-        path: '',
-        element: <Overview />,
-      },
-      {
-        path: 'customize',
-        element: <Customize />,
+        element: <DashboardLayout />,
+        children: [
+          {
+            path: '',
+            element: <Overview />,
+          },
+          {
+            path: 'customize',
+            element: <Customize />,
+          },
+        ],
       },
     ],
   },
